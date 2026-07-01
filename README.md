@@ -1,1 +1,1 @@
-# yemot-gemini-yh-yh
+# yemot-gemini-yh
