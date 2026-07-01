@@ -103,7 +103,7 @@ def chat():
             chat_session = model.start_chat(history=session['history'])
             
             try:
-                response = chat_session.send_message([""" אנא הקשב לקובץ השמע המצורף וענה עליו בקיצור נמרץ בתור תשובה למשתמש אבל אל תגיד למשתמש שקיבלת את ההודעה כקובץ שמע אלא א"כ המשתמש מבקש.:""", uploaded_audio])
+                response = chat_session.send_message([""" אנא הקשב לקובץ השמע המצורף וענה עליו בקיצור נמרץ בתור תשובה למשתמש אבל אל תגיד למשתמש שקיבלת את ההודעה כקובץ שמע אלא א"כ המשתמש מבקש וכשאתה עונה תשובה אל תגיד דברים כאלה כגון "שמעתי שאמרת מה קורה" אלא תגיד אצלי הכל בסדר ובקיצור פשוט תתיחס לקובץ שמע כאילו עכשיו כתבתי לך בצאאט את ההודעה ולא כקובץ שמע.:""", uploaded_audio])
                 
                 if not response or not hasattr(response, 'text') or not response.text:
                     print("!!! ג'מיני החזיר אובייקט ריק או חסום. בדוק הגדרות בטיחות/מכסה.")
@@ -129,7 +129,7 @@ def chat():
             with open(tts_filename, 'rb') as f:
                 requests.post(upload_url, data={
                     'token': f"{yemot_num}:{yemot_pass}",
-                    'path': f"ivr2:1/{phone}.wav"
+                    'path': f"ivr2:/{phone}.wav"
                 }, files={'file': f})
 
             print("הקובץ עלה בהצלחה!")
